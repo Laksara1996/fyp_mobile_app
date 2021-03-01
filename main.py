@@ -117,22 +117,27 @@ def model_train():
 
     get_amount_fuel_data()
 
-    speed_output = [float(i) for i in get_speed_data()]
-    ac_output = [float(i) for i in get_ac_control_data()]
+    # speed_output = [float(i) for i in get_speed_data()]
+    # ac_output = [float(i) for i in get_ac_control_data()]
+    #
+    # print(len(speed_output))
+    # print(len(ac_output))
+    #
+    # if len(speed_output) > len(ac_output):
+    #     min = len(ac_output)
+    # else:
+    #     min = len(speed_output)
+    #
+    # X = np.array((speed_output[:min], ac_output[:min])).T
+    #
+    # df = pd.DataFrame(X)
+    #
+    # print("df")
+    # print(df)
 
-    print(len(speed_output))
-    print(len(ac_output))
+    dataset = pd.read_csv("datasettt.csv")
+    df = dataset.iloc[:, [0, 1]]
 
-    if len(speed_output) > len(ac_output):
-        min = len(ac_output)
-    else:
-        min = len(speed_output)
-
-    X = np.array((speed_output[:min], ac_output[:min])).T
-
-    df = pd.DataFrame(X)
-
-    print("df")
     print(df)
 
     kmeans = KMeans(n_clusters=4, random_state=0)
